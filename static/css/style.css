@@ -1,0 +1,143 @@
+
+body {
+  font-family: 'Merriweather', serif;
+  margin: 0;
+  text-align: center;
+}
+
+h1 {
+  color: #007892;
+  font-family: 'Dancing Script', cursive;
+  font-size: 5.625rem;
+  line-height: 1.4;
+  margin: 50px auto 0 auto;
+}
+
+h2 {
+  color: #007892;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+h3 {
+  color: #11999E;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a {
+  font-family: 'Montserrat', sans-serif;
+  color: #11999E;
+}
+
+p {
+  color: #40514E;
+}
+
+hr {
+  background-color: white;
+  border-color: black;
+  border-style: none;
+  border-top-style: dotted;
+  border-width: 5px;
+  width: 10%;
+}
+
+.topContainer {
+  background-color: #abf0e9;
+  padding-top: 100px;
+}
+
+.profile {
+  margin: 50px auto;
+  text-align: center;
+  width: 50%;
+}
+
+.skill-row {
+  line-height: 2;
+  margin: 100px auto;
+  text-align: left;
+  width: 50%;
+}
+
+.topCloud {
+  height: 20%;
+  position: absolute;
+  right: 200px;
+  top: 60px;
+  width: 20%;
+}
+
+.bottomCloud {
+  bottom: 250px;
+  height: 25%;
+  left: 80px;
+  position: absolute;
+  width: 25%;
+}
+
+.bird {
+  bottom: 200px;
+  height: 8%;
+  position: absolute;
+  width: 8%;
+}
+
+.ballon{
+  height: 720px;
+  position: absolute;
+  right: 20px;
+  top: 5px;
+}
+
+.security {
+  float: right;
+  padding-left: 30px;
+  width: 30%;
+}
+
+.cloudComputing {
+  float:left;
+  padding-right: 30px;
+  width: 25%;
+}
+
+.webDevelopment {
+  float: right;
+  padding-left: 30px;
+  width: 25%;
+}
+
+.bottom-container {
+  background-color: #66BFBF;
+  padding: 20px;
+}
+
+.footer-link {
+  margin: 10px 15px;
+  font-size: 1.25rem;
+}
+
+.btn {
+	box-shadow: 0 10px 14px -7px #276873;
+	background-color:#599bb3;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+  margin: 40px;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0 1px 0 #3d768a;
+}
+.btn:hover {
+	background-color:#408c99;
+}
+.btn:active {
+	position:relative;
+	top:1px;
+}

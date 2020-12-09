@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="icon" href="../static/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Merriweather:ital@1&family=Montserrat:ital,wght@1,500&display=swap"
+          rel="stylesheet">
+
+    <title>Docking The Clouds</title>
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #abf0e9">
+        <a class="navbar-brand" href="{{ url_for('home') }}">Docking The Clouds</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link"
+                       href="https://www.youtube.com/channel/UCAEAoVYMKeDykPi0DVYCSGQ?view_as=subscriber">Youtube Channel<span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('get_all_posts') }}">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        My Work
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</head>
+
+<body>
+
+<div class="topContainer">
+    <img class="topCloud" src="../static/images/cloud.gif" alt="cloud-png">
+    <h1>I'm Hugo</h1>
+    <h2>Thank you for visiting my site.</h2>
+    <img class="bottomCloud" src="../static/images/cloud3.gif" alt="cloud-png">
+    <img class="bird" src="../static/images/bird.gif" alt="birdFlying">
+    <img class="ballon" src="../static/images/ballon.gif" alt="hotAirBallon">
+    <img src="../static/images/mountain.png" alt="mountain-png">
+</div>
+
+<div class="middle-container">
+    <div class="profile">
+        <img src="../static/images/Hugo.png" alt="profile-pic">
+        <h2>Hello.</h2>
+        <p>I am a soon to be <b>University of Texas at San Antonio</b> graduate, who is looking to utilize
+            my skills in <b><u>Computer Security</u></b>, <b><u>AWS</u></b>, and <b><u>Web Development</u></b> to become
+            an IT Professional.</p>
+    </div>
+    <hr>
+    <div class="skills">
+        <h2>My Skills.</h2>
+        <div class="skill-row">
+            <img class="security" src="../static/images/security.gif" alt="computer-security">
+            <h3>Cyber Security</h3>
+            <p>Over the past couple of years, while getting my cyber security degree, I have put in hundreds of hours in
+                digital
+                forensics, network security, application security, and operating system security. I have worked with
+                WireShark, Splunk, nmap,
+                snort, and metasploit.</p>
+        </div>
+        <div class="skill-row">
+            <img class="cloudComputing" src="../static/images/giphy-world.gif" alt="aws-cloud">
+            <h3>Cloud Computing</h3>
+            <p>I currently have my AWS Certified Solutions Architect Associate and AWS Certified SysOps Administrator
+                Associate. I am also hosting
+                a <a href="http://ratemyfestival.com/">Website</a> on AWS. This website uses S3, API Gateway, Amazon
+                Elastic Transcoder, and AuthO. </p>
+        </div>
+        <div class="skill-row">
+            <img class="webDevelopment" src="../static/images/giphy.gif" alt="web-development">
+            <h3>Design & Development</h3>
+            <p>I recently just started to learn about web development. Although I am relatively new, I have been able to
+                grasp
+                and learn most of the concepts. I built this website and I also built a <a
+                        href="https://juice10-cloud.github.io/Tetris/">Tetris Game</a>.</p>
+        </div>
+    </div>
+    <hr>
+    <div class="contact-me">
+        <h2>Get In Touch</h2>
+        <h3>I look forward to hearing from you.</h3>
+        <p>Send me an email with the contact information and I will get back to you as soon as I can.</p>
+        <a class="btn" href="mailto:dockingtheclouds@gmail.com">CONTACT ME</a>
+    </div>
+</div>
+
+<div class="bottom-container">
+    <a class="footer-link" href="https://www.linkedin.com/">LinkedIn</a>
+    <a class="footer-link" href="https://twitter.com/">Twitter</a>
+    <a class="footer-link" href="http://ratemyfestival.com">Website</a>
+    <p>© 2020 Docking the Clouds.</p>
+</div>
+
+</body>
+</html>
