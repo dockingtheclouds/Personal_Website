@@ -10,19 +10,19 @@ from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from flask_gravatar import Gravatar
 from functools import wraps
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
-ckeditor = CKEditor(app)
-Bootstrap(app)
+application = Flask(__name__)
+application.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+ckeditor = CKEditor(application)
+Bootstrap(application)
 
 # CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres_admin:Viking801870!@blog.c8yrr194hdp7.us-east-1.rds.amazonaws.com:5432/blog'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+application.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres_admin:Viking801870!@blog.c8yrr194hdp7.us-east-1.rds.amazonaws.com:5432/blog'
+application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(application)
 
 # login manager
 login_manager = LoginManager()
-login_manager.init_app(app)
+login_manager.init_app(application)
 
 
 @login_manager.user_loader
@@ -41,7 +41,7 @@ def admin_only(function):
 
 
 # create gravator
-gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False, base_url=None)
+gravatar = Gravatar(application, size=100, rating='g', default='retro', force_default=False, force_lower=False, use_ssl=False, base_url=None)
 
 
 # CONFIGURE TABLES
@@ -78,20 +78,20 @@ class Comment(db.Model):
     text = db.Column(db.Text, nullable=False)
 
 
-db.create_all()
+# db.create_all()
 
-@app.route('/')
+@application.route('/')
 def home():
     return render_template('index.html')
 
 
-@app.route('/blog')
+@application.route('/blog')
 def get_all_posts():
     posts = BlogPost.query.all()
     return render_template("blog.html", all_posts=posts, current_user=current_user)
 
 
-@app.route('/blog/register', methods=['GET', 'POST'])
+@application.route('/blog/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
@@ -119,7 +119,7 @@ def register():
     return render_template("register.html", form=form)
 
 
-@app.route('/blog/login', methods=['GET', 'POST'])
+@application.route('/blog/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -141,13 +141,13 @@ def login():
     return render_template("login.html", form=form, current_user=current_user)
 
 
-@app.route('/blog/logout')
+@application.route('/blog/logout')
 def logout():
     logout_user()
     return redirect(url_for('get_all_posts'))
 
 
-@app.route("/blog/post/<int:post_id>", methods=['GET', 'POST'])
+@application.route("/blog/post/<int:post_id>", methods=['GET', 'POST'])
 def show_post(post_id):
     form = CommentForm()
     requested_post = BlogPost.query.get(post_id)
@@ -167,17 +167,17 @@ def show_post(post_id):
     return render_template("post.html", post=requested_post, form=form, current_user=current_user)
 
 
-@app.route("/blog/about")
+@application.route("/blog/about")
 def about():
     return render_template("about.html", current_user=current_user)
 
 
-@app.route("/blog/contact")
+@application.route("/blog/contact")
 def contact():
     return render_template("contact.html", current_user=current_user)
 
 
-@app.route("/blog/new-post", methods=['GET', 'POST'])
+@application.route("/blog/new-post", methods=['GET', 'POST'])
 @admin_only
 def add_new_post():
     form = CreatePostForm()
@@ -196,7 +196,7 @@ def add_new_post():
     return render_template("make-post.html", form=form, current_user=current_user)
 
 
-@app.route("/blog/edit-post/<int:post_id>")
+@application.route("/blog/edit-post/<int:post_id>")
 @admin_only
 def edit_post(post_id):
     post = BlogPost.query.get(post_id)
@@ -219,7 +219,7 @@ def edit_post(post_id):
     return render_template("make-post.html", form=edit_form, is_edit=True, current_user=current_user)
 
 
-@app.route("/blog/delete/<int:post_id>")
+@application.route("/blog/delete/<int:post_id>")
 @admin_only
 def delete_post(post_id):
     post_to_delete = BlogPost.query.get(post_id)
@@ -229,4 +229,4 @@ def delete_post(post_id):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    application.run(host='0.0.0.0', port=5000)
