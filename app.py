@@ -89,7 +89,7 @@ def home():
 @app.route('/blog')
 def get_all_posts():
     posts = BlogPost.query.all()
-    return render_template("blog.html", all_posts=posts, current_user=current_user)
+    return render_template("blog/blog.html", all_posts=posts, current_user=current_user)
 
 
 @app.route('/blog/register', methods=['GET', 'POST'])
@@ -117,7 +117,7 @@ def register():
         login_user(new_user)
         return redirect(url_for('get_all_posts'))
 
-    return render_template("register.html", form=form)
+    return render_template("auth/register.html", form=form)
 
 
 @app.route('/blog/login', methods=['GET', 'POST'])
@@ -139,7 +139,7 @@ def login():
             login_user(user)
             return redirect(url_for('get_all_posts'))
 
-    return render_template("login.html", form=form, current_user=current_user)
+    return render_template("auth/login.html", form=form, current_user=current_user)
 
 
 @app.route('/blog/logout')
@@ -165,17 +165,17 @@ def show_post(post_id):
         db.session.add(new_comment)
         db.session.commit()
 
-    return render_template("post.html", post=requested_post, form=form, current_user=current_user)
+    return render_template("blog/post.html", post=requested_post, form=form, current_user=current_user)
 
 
 @app.route("/blog/about")
 def about():
-    return render_template("about.html", current_user=current_user)
+    return render_template("blog/about.html", current_user=current_user)
 
 
 @app.route("/blog/contact")
 def contact():
-    return render_template("contact.html", current_user=current_user)
+    return render_template("blog/contact.html", current_user=current_user)
 
 
 @app.route("/blog/new-post", methods=['GET', 'POST'])
@@ -194,7 +194,7 @@ def add_new_post():
         db.session.add(new_post)
         db.session.commit()
         return redirect(url_for("get_all_posts"))
-    return render_template("make-post.html", form=form, current_user=current_user)
+    return render_template("blog/make-post.html", form=form, current_user=current_user)
 
 
 @app.route("/blog/edit-post/<int:post_id>")
@@ -217,7 +217,7 @@ def edit_post(post_id):
         db.session.commit()
         return redirect(url_for("show_post", post_id=post.id))
 
-    return render_template("make-post.html", form=edit_form, is_edit=True, current_user=current_user)
+    return render_template("blog/make-post.html", form=edit_form, is_edit=True, current_user=current_user)
 
 
 @app.route("/blog/delete/<int:post_id>")
