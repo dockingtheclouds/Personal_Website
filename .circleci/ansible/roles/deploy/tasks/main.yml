@@ -1,0 +1,48 @@
+---
+- name: "upgrade packages"
+  become: yes
+  apt:
+    upgrade: "yes"
+
+- name: "creates directory"
+  become: yes
+  file:
+    path: /home/ubuntu/flaskapp
+    state: directory
+
+- name: "Copy backend tar.gz file and unzipping it"
+  become: yes
+  unarchive:
+    src: ~/project/flaskapp.tar.gz
+    dest: /home/ubuntu/flaskapp
+
+- name: "copy flaskapp to nginx config"
+  become: yes
+  copy:
+    src: "files/flaskapp"
+    dest: "/etc/nginx/sites-enabled/flaskapp"
+
+- name: "restarting nginx server"
+  become: yes
+  shell: service nginx restart
+
+- name: "installing requirements"
+  shell: pip3 install -r requirements.txt
+  args:
+    chdir: /home/ubuntu/flaskapp
+
+- name: "Copy gunicorn.service to systemd"
+  become: yes
+  copy:
+    src: "files/gunicorn.service"
+    dest: "/etc/systemd/system/gunicorn.service"
+
+- name: "reload daemon"
+  become: yes
+  shell: systemctl daemon-reload
+
+- name: "starting gunicorn"
+  become: yes
+  shell: service gunicorn start
+  args:
+    chdir: /home/ubuntu/backend

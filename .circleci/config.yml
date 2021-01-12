@@ -96,6 +96,7 @@ jobs:
           command: |
             ls -ahl
             tar cvzf flaskapp.tar.gz ~/project
+            ls -ahl
       - run:
           name: Deploy backend
           command: |
