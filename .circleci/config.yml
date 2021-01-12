@@ -95,7 +95,8 @@ jobs:
           name: Zip files
           command: |
             ls -ahl
-            tar cvzf flaskapp.tar.gz ~/project
+            tar cvzf flaskapp.tar.gz app.py blog.db forms.py requirements.txt static templates
+            echo "Done with tar"
             ls -ahl
       - run:
           name: Deploy backend
