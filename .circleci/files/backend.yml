@@ -35,7 +35,7 @@ Resources:
       ImageId: ami-00831fc7c1e3ddc60
       Tags:
         - Key: Name
-          Value: !Sub backend-${ID}
+          Value: !Sub dtc-backend-${ID}
 
   EIPAssociation:
     Type: AWS::EC2::EIPAssociation
