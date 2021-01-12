@@ -38,6 +38,7 @@ Resources:
           Value: !Sub backend-${ID}
 
   EIPAssociation:
-    Type: AWS::EC2::EIP
+    Type: AWS::EC2::EIPAssociation
     Properties:
       InstanceId: !Ref EC2Instance
+      AllocationId: eipalloc-10d36721

@@ -25,7 +25,7 @@ jobs:
           command: |
             yum install -y tar gzip curl
       - run:
-          name: Ensure backend infra exists
+          name: Ensure backend infrastructure exists
           command: |
             aws cloudformation deploy \
               --template-file .circleci/files/backend.yml \
@@ -43,7 +43,7 @@ jobs:
           name: Add backend ip to ansible directory
           command: |
             echo "[web]" > .circleci/ansible/inventory.txt
-            aws ec2 describe-instance \
+            aws ec2 describe-instances \
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --filters "Name=tag:Name,Values=dtc-backend-${CIRCLE_WORKFLOW_ID}" \
               --output text >> .circleci/ansible/inventory.txt
@@ -76,7 +76,33 @@ jobs:
 #      - destroy-environment:
 #          workflow_id: "${CIRCLE_WORKFLOW_ID}"
 
-
+  deploy-backend:
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints: [ '21:a2:0d:9e:26:5a:7a:77:95:2e:1b:31:ab:e2:ad:51' ]
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --update ansible gzip curl tar
+            pip install awscli
+      - run:
+          name: Create .env file and build backend
+          command: |
+            tar cvzf backend.tar.gz backend
+            cd backend
+            ls -ahl
+      - run:
+          name: Deploy backend
+          command: |
+            cd .circleci/ansible
+            ansible-playbook -i inventory.txt deploy-backend.yml
+      - destroy-environment:
+          workflow_id: "${CIRCLE_WORKFLOW_ID}"
 
 workflows:
   default:
