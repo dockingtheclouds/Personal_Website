@@ -36,3 +36,10 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub backend-${ID}
+
+  EIPAssociation:
+    Type: AWS::EC2::EIPAssociation
+    Properties:
+      AllocationId: eipalloc-0bdb6f3a
+      EIP: 54.151.0.171
+      InstanceId: !Ref EC2Instance
