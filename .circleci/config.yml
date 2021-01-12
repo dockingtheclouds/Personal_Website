@@ -75,3 +75,15 @@ jobs:
             ansible-playbook -i inventory.txt configure-server.yml
 #      - destroy-environment:
 #          workflow_id: "${CIRCLE_WORKFLOW_ID}"
+
+
+
+workflows:
+  default:
+    jobs:
+      - deploy-infrastructure:
+          filters:
+            branches:
+              only: [main]
+      - configure-infrastructure:
+          requires: [deploy-infrastructure]
