@@ -1,0 +1,9 @@
+server {
+    listen 80;
+    listen 443 ssl;
+    server_name 54.219.35.210;
+
+    location / {
+        proxy_pass http://unix:/home/ubuntu/flaskapp/flaskapp.sock;
+    }
+}

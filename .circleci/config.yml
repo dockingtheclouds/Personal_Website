@@ -92,11 +92,10 @@ jobs:
             apk add --update ansible gzip curl tar
             pip install awscli
       - run:
-          name: Create .env file and build backend
+          name: Zip files
           command: |
-            tar cvzf backend.tar.gz backend
-            cd backend
             ls -ahl
+            tar cvzf flaskapp.tar.gz ~/project
       - run:
           name: Deploy backend
           command: |
@@ -114,3 +113,5 @@ workflows:
               only: [main]
       - configure-infrastructure:
           requires: [deploy-infrastructure]
+      - deploy-backend:
+          requires: [configure-infrastructure]

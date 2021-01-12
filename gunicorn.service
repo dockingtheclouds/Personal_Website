@@ -1,0 +1,9 @@
+[Unit]
+Description=Gunicorn service
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/flaskapp
+ExecStart=/usr/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/flaskapp/flaskapp.sock -m 007 app:app
