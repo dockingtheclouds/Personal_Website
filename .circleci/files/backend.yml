@@ -42,3 +42,10 @@ Resources:
     Properties:
       InstanceId: !Ref EC2Instance
       AllocationId: eipalloc-10d36721
+
+Outputs:
+  WorkflowID:
+    Value: !Sub ${ID}
+    Description: Workflow Id
+    Export:
+      Name: WorkflowID
