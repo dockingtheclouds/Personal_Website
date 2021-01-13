@@ -22,12 +22,6 @@
     src: "files/flaskapp"
     dest: "/etc/nginx/sites-enabled/flaskapp"
 
-- name: "restarting nginx server"
-  become: yes
-  service:
-    name: nginx
-    state: restarted
-
 - name: "installing requirements"
   shell: pip3 install -r requirements.txt
   args:
@@ -50,3 +44,9 @@
     name: gunicorn.service
     enabled: yes
     state: started
+
+- name: "restarting nginx server"
+  become: yes
+  service:
+    name: nginx
+    state: restarted
