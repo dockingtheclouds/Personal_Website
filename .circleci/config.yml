@@ -128,7 +128,7 @@ jobs:
             if [[ "${STACKS[@]}" =~ "${OldWorkflowID}" ]]
             then
               echo "Found pair"
-              #aws cloudformation delete-stack --stack-name "dtc-backend-${OldWorkflowID}"
+              aws cloudformation delete-stack --stack-name "dtc-backend-${OldWorkflowID}"
             fi
 
 workflows:
