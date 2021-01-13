@@ -9,7 +9,7 @@ Resources:
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: !Sub UdaPeople-${ID}
+      GroupName: !Sub DockingTheClouds-${ID}
       GroupDescription: Allow port 22, 80 and 443.
       SecurityGroupIngress:
         - IpProtocol: tcp
