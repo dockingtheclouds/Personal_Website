@@ -6,4 +6,4 @@ After=network.target
 User=ubuntu
 Group=www-data
 WorkingDirectory=/home/ubuntu/flaskapp
-ExecStart=/usr/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/flaskapp/flaskapp.sock -m 007 app:app
+ExecStart=/usr/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/flaskapp.sock -m 007 app:app
