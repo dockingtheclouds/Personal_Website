@@ -24,7 +24,9 @@
 
 - name: "restarting nginx server"
   become: yes
-  shell: service nginx restart
+  service:
+    name: nginx
+    state: restarted
 
 - name: "installing requirements"
   shell: pip3 install -r requirements.txt
@@ -39,10 +41,12 @@
 
 - name: "reload daemon"
   become: yes
-  shell: systemctl daemon-reload
+  systemd:
+    daemon_reload: yes
 
-- name: "starting gunicorn"
+- name: "enable gunicorn service"
   become: yes
-  shell: service gunicorn start
-  args:
-    chdir: /home/ubuntu/backend
+  service:
+    name: gunicorn.service
+    enabled: yes
+    state: started
