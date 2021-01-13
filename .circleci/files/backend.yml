@@ -48,4 +48,4 @@ Outputs:
     Value: !Sub ${ID}
     Description: Workflow Id
     Export:
-      Name: WorkflowID
+      Name: dtc-WorkflowID
