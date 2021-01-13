@@ -119,7 +119,7 @@ jobs:
           name: Get old stack workflow and remove stack
           command: |
             export OldWorkflowID=$(aws cloudformation \
-              list-exports --query "Exports[?Name==\`dtc-WorkflowID\`].Value" \
+              list-exports --query "Exports[?Name==\`DtcWorkflowID\`].Value" \
               --no-paginate --output text)
             export STACKS=($(aws cloudformation list-stacks --query "StackSummaries[*].StackName" \
               --stack-status-filter CREATE_COMPLETE --no-paginate --output text))

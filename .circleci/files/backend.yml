@@ -44,8 +44,8 @@ Resources:
       AllocationId: eipalloc-10d36721
 
 Outputs:
-  WorkflowID:
+  DtcWorkflowID:
     Value: !Sub ${ID}
     Description: Workflow Id
     Export:
-      Name: dtc-WorkflowID
+      Name: DtcWorkflowID
